@@ -9,22 +9,10 @@
 		<h1>CONTACT US</h1>
        	   <hr>
 			  <p>Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
-			  <?php if("POST" === $_SERVER["REQUEST_METHOD"]) :?>
-                <div class="alert alert-<?=(empty($errores) ? 'info': 'danger');?> alert-dismissible" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">x</span>
-                    </button>
-                    <div><?=$info;?></div>
-                    <?php  if (!empty($errores)) : ?>
-					<ul>
-						<?php foreach($errores as $error) : ?>
-							<li><?=$error;?></li>
-						<?php endforeach;?>
-					</ul>
-                    <?php endif; ?>
-                </div>
-            <?php endif;?>
-			  <form class="form-horizontal" action="/contact.php" method="POST">
+				<?php
+				include __DIR__ . "/partials/show-messages.part.php";
+				?>
+          <form class="form-horizontal" action="/contact.php" method="POST">
 	       	  <div class="form-group">
 	       	  	<div class="col-xs-6">
 	       	  	    <label for="firstName" class="label-control">First Name</label>
