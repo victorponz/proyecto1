@@ -6,36 +6,51 @@
    <div id="contact">
    	  <div class="container">
    	    <div class="col-xs-12 col-sm-8 col-sm-push-2">
-       	   <h1>CONTACT US</h1>
+		<h1>CONTACT US</h1>
        	   <hr>
-       	   <p>Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
-	       <form class="form-horizontal">
+			  <p>Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
+			  <?php if("POST" === $_SERVER["REQUEST_METHOD"]) :?>
+                <div class="alert alert-<?=(empty($errores) ? 'info': 'danger');?> alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">x</span>
+                    </button>
+                    <div><?=$info;?></div>
+                    <?php  if (!empty($errores)) : ?>
+					<ul>
+						<?php foreach($errores as $error) : ?>
+							<li><?=$error;?></li>
+						<?php endforeach;?>
+					</ul>
+                    <?php endif; ?>
+                </div>
+            <?php endif;?>
+			  <form class="form-horizontal" action="/contact.php" method="POST">
 	       	  <div class="form-group">
 	       	  	<div class="col-xs-6">
-	       	  	    <label class="label-control">First Name</label>
-	       	  		<input class="form-control" type="text">
+	       	  	    <label for="firstName" class="label-control">First Name</label>
+	       	  		<input class="form-control <?= ($firstNameError ? " has-error" : "");?>" type="text" name="firstName" id="firstName" value="<?=$firstName?>">
 	       	  	</div>
 	       	  	<div class="col-xs-6">
-	       	  	    <label class="label-control">Last Name</label>
-	       	  		<input class="form-control" type="text">
+	       	  	    <label for="lastName" class="label-control">Last Name</label>
+	       	  		<input class="form-control" type="text" name="lastName" id="lastName" value="<?=$lastName?>">
 	       	  	</div>
 	       	  </div>
 	       	  <div class="form-group">
 	       	  	<div class="col-xs-12">
-	       	  		<label class="label-control">Email</label>
-	       	  		<input class="form-control" type="text">
+	       	  		<label for="email" class="label-control">Email</label>
+	       	  		<input class="form-control <?= ($emailErr ? " has-error" : "");?>" type="text" name="email" id="email" value="<?=$email?>">
 	       	  	</div>
 	       	  </div>
 	       	  <div class="form-group">
 	       	  	<div class="col-xs-12">
-	       	  		<label class="label-control">Subject</label>
-	       	  		<input class="form-control" type="text">
+	       	  		<label for="subject" class="label-control">Subject</label>
+	       	  		<input class="form-control <?= ($subjectError ? " has-error" : "");?>" type="text" name="subject" id="subject"  value="<?=$subject?>">
 	       	  	</div>
 	       	  </div>
 	       	  <div class="form-group">
 	       	  	<div class="col-xs-12">
-	       	  		<label class="label-control">Message</label>
-	       	  		<textarea class="form-control"></textarea>
+	       	  		<label for="message" class="label-control">Message</label>
+	       	  		<textarea class="form-control" name="message" id="message"><?= $message?></textarea>
 	       	  		<button class="pull-right btn btn-lg sr-button">SEND</button>
 	       	  	</div>
 	       	  </div>
