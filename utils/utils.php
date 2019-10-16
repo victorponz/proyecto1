@@ -24,3 +24,14 @@ function sanitizeInput(string $data): string {
     $data = htmlspecialchars($data);
     return $data;
 }
+
+/**
+ * Devuelve un máximo de tres elementos aleatorios del array $asociados
+ *
+ * @param array $asociados
+ * @return array
+ */
+function getAsociados(array $asociados): array{
+    shuffle($asociados);
+    return array_slice($asociados,0, 3);
+}
