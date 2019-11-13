@@ -101,4 +101,16 @@ abstract class Element
      */
     abstract public function render(): string;
  
+    /**
+     * Genera el HTML para los atributos comunes
+     *
+     * @return string
+     */
+    protected function renderAttributes(): string
+    {
+        $html = (!empty($this->id) ? " id='$this->id' " : '');
+        $html .= (!empty($this->cssClass) ? " class='$this->cssClass' " : '');
+        $html .= (!empty($this->style) ? " style='$this->style' " : '');
+        return $html;
+    }
 }

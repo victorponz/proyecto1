@@ -27,9 +27,7 @@ class FormElement extends CompoundElement
         $html = 
             "<form action='{$this->action}' method='POST'" .
             (!empty($this->enctype) ? " enctype='$this->enctype' " : '') .  
-            (!empty($this->id) ? " id='$this->id' " : '') .
-            (!empty($this->cssClass) ? " class='$this->cssClass' " : '') .
-            (!empty($this->style) ? " style='$this->style' " : '') .
+            $this->renderAttributes() . 
             ">";
             $html .= $this->renderChildren();
             

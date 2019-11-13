@@ -21,9 +21,7 @@ class ButtonElement extends DataElement
        return 
             "<button type='submit'" . 
             (!empty($this->name) ? " name='$this->name' " : '') .
-            (!empty($this->id) ? " id='$this->id' " : '') .
-            (!empty($this->cssClass) ? " class='$this->cssClass' " : '') .
-            (!empty($this->style) ? " style='$this->style' " : '') .
+            $this->renderAttributes() . 
             ">{$this->text}</button>";  
     }
 }
