@@ -10,9 +10,17 @@ abstract class CompoundElement extends DataElement
      */
     private $children;
 
+    /**
+     * Errores de validación del elemento
+     *
+     * @var array
+     */
+    private $errors;
+
     public function __construct(string $name, string $type, string $id = '', string $cssClass  = '', string $style = '')
 	{
         $this->children = [];
+        $this->errors = [];
         parent::__construct($name, $type, $id, $cssClass, $style);
     }
 
@@ -43,6 +51,46 @@ abstract class CompoundElement extends DataElement
             $html .= $child->render();
         }
         return $html;
+    }
+
+    /**
+     * Valida todos los elementos hijos
+     *
+     * @return void
+     */
+    public function validate()
+    {
+        foreach ($this->getChildren() as $child) {
+            if (is_subclass_of($child, "DataElement")) {
+                $child->validate();
+                if ($child->hasError()){
+                    $this->errors = array_merge($this->errors, $child->getErrors());
+                }	
+            }
+        } 
+    }
+
+    public function hasError(): bool
+    {
+        return (count($this->errors) > 0);
+    }
+    public function getErrors(): array
+    {
+        return $this->errors;
+    }
+
+    /**
+     * Devuelve a su valor por defecto a todos los campos hijos
+     *
+     * @return void
+     */
+    public function reset()
+    {
+        foreach ($this->getChildren() as $child) {
+            if (is_subclass_of($child, "DataElement")) {
+                $child->reset();
+            }
+        } 
     }
 
 }

@@ -83,4 +83,19 @@ class SelectElement extends CompoundElement
         $html .= '</select>';  
         return $html;
     }
+
+     /**
+     * Valida el campo según los criterios del validador
+     * Es un caso especial porque aunque tenga hijos, estos no tienen validador (hereda de CompoundElement)
+     * @return void
+     */
+    public function validate()
+    {
+        $this->setPostValue();
+        if (!empty($this->getValidator())) {
+            $this->validator->setData($this->getValue());
+            $this->validator->validate();
+            $this->errors = array_merge($this->errors, $this->validator->getErrors());
+        }
+    }
 }

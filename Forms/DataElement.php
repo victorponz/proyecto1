@@ -1,7 +1,9 @@
 <?php
 require_once "./Element.php";
+require_once "./Validator/IValidator.php";
+require_once "./Validator/Validator.php";
 
-abstract class DataElement extends Element
+abstract class DataElement extends Element implements IValidator
 {
     /**
      * Nombre del campo en el formulario
@@ -29,6 +31,13 @@ abstract class DataElement extends Element
      * @var bool
      */
     private $donePostValue;
+
+    /**
+     * Validador para este campo
+     *
+     * @var Validator
+     */
+    private $validator;
 
     public function __construct(string $name, string $type, string $id = '', string $cssClass  = '', string $style = '') {
         $this->name = $name;
@@ -160,5 +169,60 @@ abstract class DataElement extends Element
         $html = (!empty($this->name) ? " name='$this->name' " : '');
         $html .= parent::renderAttributes();
         return $html;
+    }
+
+    /**
+     * Get the value of validator
+     *
+     */ 
+    public function getValidator(){
+        return $this->validator;
+    }
+    
+    /**
+     * Set the value of validator
+     *
+     * @param  Validator  $validator
+     *
+     * @return  self
+     */ 
+    public function setValidator(Validator $validator)
+    {
+        
+        $this->validator = $validator;
+        $this->setPostValue();
+        $this->validator->setData($this->getValue());
+       
+        return $this;
+    }
+
+    public function validate(){
+        if (!empty($this->getValidator())) {
+            $this->validator->validate();
+        }
+    }
+
+    public function hasError(): bool{
+        if (!empty($this->getValidator())) {
+            return $this->validator->hasError();
+        } else {
+            return false;
+        }
+    }
+    
+    public function getErrors(): array{
+        return $this->validator->getErrors();
+    }
+
+    /**
+     * Devuelve el valor del campo a su valor original
+     *
+     * @return void
+     */
+    public function reset(){
+        if (isset($_POST[$this->name])) {
+            $_POST[$this->name] = ($this->defaultValue ?? '');
+        }
+        $this->setValue($this->defaultValue ?? '');
     }
 }
