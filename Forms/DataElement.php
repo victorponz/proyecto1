@@ -8,27 +8,27 @@ abstract class DataElement extends Element
      *
      * @var string
      */
-    protected $name;
+    private $name;
 
     /**
      * Valor del campo
      *
      * @var string
      */
-    protected $value;
+    private $value;
     
     /**
      * Valor por defecto
      *
      */ 
-    protected $defaultValue;
+    private $defaultValue;
 
     /**
      * Bandera para indicar que ya se han fijados los datos del POST
      *
      * @var bool
      */
-    protected $donePostValue;
+    private $donePostValue;
 
     public function __construct(string $name, string $type, string $id = '', string $cssClass  = '', string $style = '') {
         $this->name = $name;
@@ -150,4 +150,15 @@ abstract class DataElement extends Element
         return $this;
     }
 
+    /**
+     * Genera el HTML para los atributos comunes
+     *
+     * @return string
+     */
+    protected function renderAttributes(): string
+    {
+        $html = (!empty($this->name) ? " name='$this->name' " : '');
+        $html .= parent::renderAttributes();
+        return $html;
+    }
 }

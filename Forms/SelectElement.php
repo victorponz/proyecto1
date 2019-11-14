@@ -31,11 +31,11 @@ class SelectElement extends CompoundElement
        
         if ($this->isMultiple()) {
             //En este caso es un array
-            if (!empty($_POST[$this->name])){
-                foreach ($_POST[$this->name] as $key => $data){
-                    $_POST[$this->name][$key] = htmlspecialchars(stripslashes(trim($data)));
+            if (!empty($_POST[$this->getName()])){
+                foreach ($_POST[$this->getName()] as $key => $data){
+                    $_POST[$this->getName()][$key] = htmlspecialchars(stripslashes(trim($data)));
                 }
-                return $_POST[$this->name];
+                return $_POST[$this->getName()];
             }
         }else{
             return parent::sanitizeInput();
@@ -59,13 +59,25 @@ class SelectElement extends CompoundElement
     return $values;
     }
 
+    /**
+     * Genera el HTML para los atributos comunes
+     *
+     * @return string
+     */
+    protected function renderAttributes(): string
+    {
+        $html = (!empty($this->getName()) ? " name='{$this->getName()}" . ($this->isMultiple() ? "[]'" : '') :  "'");
+        $html .= Element::renderAttributes();
+        return $html;
+    }
+
     public function render(): string
     {
         $this->setPostValue();
         //Si es múltiple, hemos de añadir [] para que el valor del POST sea un array
-        $html = "<select name='{$this->name}" . ($this->multiple ? '[]' : '') . "'" ;
+        $html = "<select " ;
             $html .= $this->renderAttributes(); 
-            $html .= ($this->multiple ? " multiple " : '');
+            $html .= ($this->isMultiple() ? " multiple " : '');
             $html .= ">";
             $html .= $this->renderChildren();
         $html .= '</select>';  

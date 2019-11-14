@@ -17,13 +17,14 @@ class InputElement extends DataElement
     public function render(): string
     {
         $this->setPostValue();
-        $html = "<input type='{$this->type}' name='{$this->name}'" ; 
+        $html = "<input type='{$this->getType()}' " ; 
+        $html .= $this->renderAttributes();
         if ('POST' === $_SERVER['REQUEST_METHOD']) {
             $html .= " value='" . $this->getValue() . "'";
         } else {
-            $html .= " value='{$this->defaultValue}'";
+            $html .= " value='{$this->getDefaultValue()}'";
         }
-        $html .= $this->renderAttributes();
+       
         $html .= '>';
         return $html;
     }

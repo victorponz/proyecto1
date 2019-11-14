@@ -32,7 +32,7 @@ class CheckboxElement extends DataElement
      */
     private function isInputArray(): bool
     {
-        return (substr($this->name, strlen($this->name) - strlen('[]') ) === '[]');
+        return (substr($this->getName(), strlen($this->getName()) - strlen('[]') ) === '[]');
     }
 
     /**
@@ -43,9 +43,9 @@ class CheckboxElement extends DataElement
     private function getRealName(): string
     {
         if ($this->isInputArray())
-            return substr($this->name, 0, strlen($this->name) - 2);
+            return substr($this->getName(), 0, strlen($this->getName()) - 2);
         else
-            return $this->name;
+            return $this->getName();
     }
 
     /**
@@ -81,13 +81,13 @@ class CheckboxElement extends DataElement
                 $realName =  $this->getRealName();
                 if (!empty($_POST[$realName])) {
                     foreach ($_POST[$realName] as $chkval) {	
-                        if ($chkval == $this->defaultValue) {
+                        if ($chkval == $this->getDefaultValue()) {
                             return true;
                         }
                     }
                 }
-            } else if (isset($_POST[$this->name])) {
-                return ($_POST[$this->name] == $this->defaultValue);
+            } else if (isset($_POST[$this->getName()])) {
+                return ($_POST[$this->name] == $this->getDefaultValue());
             }
         } else {
             return $this->checked;
@@ -103,9 +103,9 @@ class CheckboxElement extends DataElement
     public function render(): string
     {
         $this->setPostValue();
-        $html = "<input type='checkbox' name='{$this->name}' " ;
-        $html .= " value='{$this->defaultValue}'";
+        $html = "<input type='checkbox' " ;
         $html .= $this->renderAttributes();
+        $html .= " value='{$this->getDefaultValue()}'";
         $html .= ($this->isChecked() ? ' checked' : '');
         $html .= '>' . $this->text;
         return $html;

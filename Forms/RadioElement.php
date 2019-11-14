@@ -26,7 +26,7 @@ class RadioElement extends InputElement
 
     public function isChecked(){
         if ('POST' === $_SERVER['REQUEST_METHOD']) {
-            return ($this->getValue() == $this->defaultValue);
+            return ($this->getValue() == $this->getDefaultValue());
         } else {
             return $this->checked;
         }
@@ -40,9 +40,9 @@ class RadioElement extends InputElement
     public function render(): string
     {
         $this->setPostValue();
-        $html = "<input type='radio' name='{$this->name}' " ;
-        $html .= " value='{$this->defaultValue}'";
+        $html = "<input type='radio' " ;
         $html .= $this->renderAttributes(); 
+        $html .= " value='{$this->getDefaultValue()}'";
         $html .= ($this->isChecked() ? ' checked' : '');
         $html .= '>' . $this->text;
         return $html;

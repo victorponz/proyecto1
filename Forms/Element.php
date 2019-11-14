@@ -7,24 +7,25 @@ abstract class Element
      * Id del Elemento
      * @var string
      */
-    protected $id;
+    private $id;
 
     /**
      * Clase css del Elemento
      * @var string
      */
-    protected $cssClass;
+    private $cssClass;
+    
     /**
      * @var string
      */
-    protected $style;
+    private $style;
    
      /**
      * Tipo del input
      *
      * @var string
      */
-    protected $type;
+    private $type;
     
     public function __construct(string $type, string $id = '', string $cssClass  = '', string $style = '')
     {
@@ -80,6 +81,17 @@ abstract class Element
         return $this;
     }
 
+
+    /**
+     * Get the value of style
+     *
+     * @return  string
+     */ 
+    public function getStyle()
+    {
+        return $this->style;
+    }
+
     /**
      * Set the value of style
      *
@@ -94,6 +106,16 @@ abstract class Element
         return $this;
     }
 
+    /**
+     * Get tipo del input
+     *
+     * @return  string
+     */ 
+    public function getType()
+    {
+        return $this->type;
+    }
+    
     /**
      * Genera el código HTML del elemento
      *
@@ -113,4 +135,5 @@ abstract class Element
         $html .= (!empty($this->style) ? " style='$this->style' " : '');
         return $html;
     }
+
 }

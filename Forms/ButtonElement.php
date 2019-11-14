@@ -19,8 +19,7 @@ class ButtonElement extends DataElement
     public function render(): string
     {
        return 
-            "<button type='submit'" . 
-            (!empty($this->name) ? " name='$this->name' " : '') .
+            "<button type='submit' " . 
             $this->renderAttributes() . 
             ">{$this->text}</button>";  
     }

@@ -30,21 +30,21 @@ class OptionElement extends DataElement
             if ($this->parent->isMultiple()) {
                 if (!empty($this->parent->getValue())) {
                     foreach ($this->parent->getValue() as $chkval) {	
-                        if ($chkval == $this->defaultValue) {
+                        if ($chkval == $this->getDefaultValue()) {
                             return true;
                         }
                     }
                 }
             } else {
-                return ($this->parent->getValue() == $this->defaultValue);   
+                return ($this->parent->getValue() == $this->getDefaultValue());   
             }
         } else {
             if ($this->parent->isMultiple()) {
                 if (is_array($this->parent->getDefaultValue())) {
-                    return in_array($this->defaultValue, $this->parent->getDefaultValue());
+                    return in_array($this->getDefaultValue(), $this->parent->getDefaultValue());
                 }
             } else {
-                return $this->parent->getDefaultValue() == $this->defaultValue;
+                return $this->parent->getDefaultValue() == $this->getDefaultValue();
             }
         }
         return false;
@@ -54,7 +54,7 @@ class OptionElement extends DataElement
     public function render(): string
     {
         $html = '<option ' ;
-        $html .= " value='{$this->defaultValue}'";
+        $html .= " value='{$this->getDefaultValue()}'";
         $html .= $this->renderAttributes(); 
         $html .= ($this->isSelected() ? " selected" : "");  
         $html .= ">" . $this->text;

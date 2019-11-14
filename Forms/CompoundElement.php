@@ -8,7 +8,7 @@ abstract class CompoundElement extends DataElement
      *
      * @var array
      */
-    protected $children;
+    private $children;
 
     public function __construct(string $name, string $type, string $id = '', string $cssClass  = '', string $style = '')
 	{
