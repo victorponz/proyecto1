@@ -12,4 +12,6 @@ interface IValidator
     public function hasError(): bool;
     
     public function getErrors(): array;
+
+    public function appendValidator(Validator $validator);
 }

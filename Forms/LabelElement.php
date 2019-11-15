@@ -2,7 +2,7 @@
 require_once "./Element.php";
 require_once "./DataElement.php";
 
-class LabelElement extends Element
+class LabelElement extends CompoundElement
 {
     /**
      * Texto de la etiqueta
@@ -32,9 +32,12 @@ class LabelElement extends Element
         $this->for = $for;
         $this->renderElement = $renderElement;
         parent::__construct('label', $id, $cssClass, $style);
+        if ($renderElement) {
+            $this->appendChild($for);
+        }
     }
     /**
-     * Además de renderizar el label, también renderiza el elemento asociado si $renderElement es true
+     * Además de renderizar el label, también renderiza el elemento asociado
      *
      * @return string
      */
@@ -44,7 +47,7 @@ class LabelElement extends Element
             "<label " . 
             (!empty($this->for) ? " for='{$this->for->getId()}' " : '') .
             $this->renderAttributes() .
-            ">{$this->text}" . ($this->renderElement ? $this->for->render() : '')  . "</label>";
+            ">{$this->text} " . $this->renderChildren()  . "</label>";
     
     }
 }

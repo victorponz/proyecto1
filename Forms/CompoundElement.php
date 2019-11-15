@@ -1,7 +1,7 @@
 <?php
 require_once "./DataElement.php";
 
-abstract class CompoundElement extends DataElement
+class CompoundElement extends DataElement
 {
     /**
      * Hijos del elemento
@@ -92,5 +92,22 @@ abstract class CompoundElement extends DataElement
             }
         } 
     }
+
+    /**
+     * Renderizamos por defecto el elemento y todos sus hijos
+     *
+     * @return string
+     */
+    public function render(): string
+    {
+        $html = 
+            "<{$this->getType()} " . 
+            $this->renderAttributes() .
+            ">";
+                $html .= $this->renderChildren();
+             
+        $html .= "</{$this->getType()}>"; 
+        return $html;
+    }   
 
 }

@@ -196,6 +196,20 @@ abstract class DataElement extends Element implements IValidator
         return $this;
     }
 
+    /**
+     * Añade un validador al validador por defecto
+     *
+     * @param Validator $validator
+     * @return self
+     */
+    public function appendValidator(Validator $validator): DataElement {
+        if (!empty($this->validator)) {
+            $this->validator->setNextValidator($validator);
+        }
+
+        return $this;
+    }
+
     public function validate(){
         if (!empty($this->getValidator())) {
             $this->validator->validate();
