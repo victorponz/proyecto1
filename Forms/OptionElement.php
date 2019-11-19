@@ -1,6 +1,6 @@
 <?php
-require_once "./DataElement.php";
-require_once "./SelectElement.php";
+require_once  __DIR__ . "/DataElement.php";
+require_once  __DIR__ . "/SelectElement.php";
 
 class OptionElement extends DataElement
 {

@@ -1,7 +1,7 @@
 <?php
-require_once "./Element.php";
-require_once "./Validator/IValidator.php";
-require_once "./Validator/Validator.php";
+require_once __DIR__ . "/Element.php";
+require_once __DIR__ . "/Validator/IValidator.php";
+require_once __DIR__ . "/Validator/Validator.php";
 
 abstract class DataElement extends Element implements IValidator
 {

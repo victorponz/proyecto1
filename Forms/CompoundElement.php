@@ -1,5 +1,5 @@
 <?php
-require_once "./DataElement.php";
+require_once __DIR__ . "/DataElement.php";
 
 class CompoundElement extends DataElement
 {
@@ -77,6 +77,16 @@ class CompoundElement extends DataElement
     public function getErrors(): array
     {
         return $this->errors;
+    }
+
+    /**
+     * Permite añadir un error programáticamente
+     *
+     * @param string $error
+     * @return void
+     */
+    public function addError(string $error){
+        $this->errors[] = $error;
     }
 
     /**

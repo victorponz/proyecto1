@@ -1,5 +1,5 @@
 <?php
-require_once "./CompoundElement.php";
+require_once  __DIR__ . "/CompoundElement.php";
 
 class SelectElement extends CompoundElement
 {

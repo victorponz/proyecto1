@@ -1,5 +1,5 @@
 <?php
-require_once "./DataElement.php";
+require_once __DIR__ . "/DataElement.php";
 
 class CheckboxElement extends DataElement
 {

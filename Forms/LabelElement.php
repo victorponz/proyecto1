@@ -1,6 +1,6 @@
 <?php
-require_once "./Element.php";
-require_once "./DataElement.php";
+require_once __DIR__ . "/CompoundElement.php";
+require_once __DIR__ . "/DataElement.php";
 
 class LabelElement extends CompoundElement
 {

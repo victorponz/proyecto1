@@ -1,5 +1,5 @@
 <?php
-require_once "./InputElement.php";
+require_once __DIR__ . "/InputElement.php";
 require_once __DIR__ . "/Validator/EmailValidator.php";
 class EmailElement extends InputElement
 {
