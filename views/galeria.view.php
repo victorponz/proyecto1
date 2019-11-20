@@ -14,6 +14,38 @@
                 <a href='<?=$urlImagen?>' target='_blank'>Ver Imagen</a>
             <?php endif; ?>
            <?=$form->render();?>
+           <hr class="divider">
+            <div class="imagenes_galeria">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Imagen</th>
+                        <th scope="col">Visualizaciones</th>
+                        <th scope="col">Likes</th>
+                        <th scope="col">Descargas</th>
+                        <th scope="col">Categoría</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php foreach ($imagenes as $imagen): ?>
+                        <tr>
+                            <th scope="row"><?= $imagen->getId(); ?></th>
+                            <td>
+                                <img src="<?= $imagen->getUrlGallery(); ?>"
+                                    alt="<?= $imagen->getDescripcion(); ?>"
+                                    title="<?= $imagen->getDescripcion(); ?>"
+                                    width="100px">
+                            </td>
+                            <td><?= $imagen->getNumVisualizaciones(); ?></td>
+                            <td><?= $imagen->getNumLikes(); ?></td>
+                            <td><?= $imagen->getNumDownloads(); ?></td>
+                            <td><?= $repositorio->getCategoria($imagen)->getNombre(); ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 
