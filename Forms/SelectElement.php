@@ -66,7 +66,7 @@ class SelectElement extends CompoundElement
      */
     protected function renderAttributes(): string
     {
-        $html = (!empty($this->getName()) ? " name='{$this->getName()}" . ($this->isMultiple() ? "[]'" : '') :  "'");
+        $html = (!empty($this->getName()) ? " name='{$this->getName()}" . ($this->isMultiple() ? "[]'" : "'") :  "");
         $html .= Element::renderAttributes();
         return $html;
     }
