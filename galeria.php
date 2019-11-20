@@ -23,14 +23,14 @@
 
     $fv = new MimetypeValidator(['image/jpeg', 'image/jpg', 'image/png'], 'Formato no soportado', true);
     
-    //$fv->setNextValidator(new MaxSizeValidator(2 * 1024 * 1024, 'El archivo no debe exceder 2M', true));
+    $fv->setNextValidator(new MaxSizeValidator(2 * 1024 * 1024, 'El archivo no debe exceder 2M', true));
     $file = new FileElement('imagen', 'imagen');
     $file
       ->setValidator($fv);
 
     $labelFile = new LabelElement('Imagen', $file);
 
-    $b = new ButtonElement('Send', '', '', '', 'pull-right btn btn-lg sr-button');
+    $b = new ButtonElement('Send', '', '', 'pull-right btn btn-lg sr-button', '');
 
     $form = new FormElement('', 'multipart/form-data');
     $form

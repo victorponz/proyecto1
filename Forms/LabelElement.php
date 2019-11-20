@@ -47,7 +47,7 @@ class LabelElement extends CompoundElement
             "<label " . 
             (!empty($this->for) ? " for='{$this->for->getId()}' " : '') .
             $this->renderAttributes() .
-            ">{$this->text} " . $this->renderChildren()  . "</label>";
+            ">{$this->text} " . "</label>" . $this->renderChildren();
     
     }
 }

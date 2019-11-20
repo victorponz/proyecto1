@@ -35,7 +35,7 @@
 
     $messageWrapper = new MyFormGroup([new MyFormControl($message, 'Mensaje', 'col-xs-12')]);
 
-    $b = new ButtonElement('Send', '', '', '', 'pull-right btn btn-lg sr-button');
+    $b = new ButtonElement('Send', '', '', 'pull-right btn btn-lg sr-button', '');
 
     $form = new FormElement();
     

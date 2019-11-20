@@ -35,7 +35,7 @@
 
     $labelFile = new LabelElement('Imagen', $file);
 
-    $b = new ButtonElement('Send', '', '', '', 'pull-right btn btn-lg sr-button');
+    $b = new ButtonElement('Send', '', '', 'pull-right btn btn-lg sr-button', '');
 
     $form = new FormElement('', 'multipart/form-data');
     $form

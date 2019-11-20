@@ -6,12 +6,12 @@ class MyFormControl extends CompoundElement
 {
     private $container;
     public $formElement;
-    public function __construct(Element $formElement, $labelText) {
+    public function __construct(Element $formElement, $labelText, $cssClass = 'col-xs-6') {
         $this->formElement = $formElement;
         $this->formElement->setCssClass('form-control');
 
         $this->container = new CompoundElement('', 'div');
-        $this->container->setCssClass("col-xs-6");
+        $this->container->setCssClass($cssClass);
       
         $label = new LabelElement($labelText, $formElement, true);
         $label->setCssClass("label-control");
