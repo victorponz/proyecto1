@@ -1,4 +1,5 @@
 <?php
+    session_start();
     $title = "Asociados";
     require_once "./utils/utils.php";
     require_once "./Forms/InputElement.php";

@@ -1,4 +1,5 @@
 <?php
+    session_start();
 	$title = "Home";
 	require_once "./utils/utils.php";
     require_once "./entity/ImagenGaleria.php";

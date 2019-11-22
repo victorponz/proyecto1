@@ -26,12 +26,30 @@
                 <li class="<?= (esOpcionMenuActiva("contact")? "active" : "");?> lien">
                   <a href="<?= (esOpcionMenuActiva("contact")? "#" : "/contact.php");?>"><i class="fa fa-phone-square sr-icons"></i> Contact</a>
                 </li>
-                <li class="<?= (esOpcionMenuActiva("galeria")? "active" : "");?> lien">
-                  <a href="<?= (esOpcionMenuActiva("galeria")? "#" : "/galeria.php");?>"><i class="fa fa-image sr-icons"></i> Galería</a>
+                <?php  if (!isset($_SESSION['username'])):?>
+                    <li class="<?= (esOpcionMenuActiva("login")? "active" : "");?> lien">
+                        <a href="<?= (esOpcionMenuActiva("login")? "#" : "/login.php");?>">
+                            <i class="fa fa-user-secret sr-icons"></i> Login
+                        </a>
+                    </li>
+                    <li class="<?= (esOpcionMenuActiva("register")? "active" : "");?>">
+                        <a href="<?= (esOpcionMenuActiva("register")? "#" : "/register.php");?>">
+                            <i class="fa fa-sign-in sr-icons"></i> Registro
+                        </a>
+                    </li>
+                <?php else : ?>
+                    <li class="<?= (esOpcionMenuActiva("galeria")? "active" : "");?> lien">
+                    <a href="<?= (esOpcionMenuActiva("galeria")? "#" : "/galeria.php");?>"><i class="fa fa-image sr-icons"></i> Galería</a>
+                    </li>
+                    <li class="<?= (esOpcionMenuActiva("asociados")? "active" : "");?> lien">
+                    <a href="<?= (esOpcionMenuActiva("asociados")? "#" : "/asociados.php");?>"><i class="fa fa-hand-o-right sr-icons"></i> Asociados</a>
+                    </li>
+                    <li class="<?= (esOpcionMenuActiva("logout")? "active" : "");?>">
+                    <a href="<?= (esOpcionMenuActiva("logout")? "#" : "/logout.php");?>">
+                        <i class="fa fa-sign-out sr-icons"></i> <?=$_SESSION['username']?> - Salir
+                    </a>
                 </li>
-                <li class="<?= (esOpcionMenuActiva("asociados")? "active" : "");?>">
-                  <a href="<?= (esOpcionMenuActiva("asociados")? "#" : "/asociados.php");?>"><i class="fa fa-hand-o-right sr-icons"></i> Asociados</a>
-                </li>
+                <?php endif ?>
             </ul>
         </div>
     </div>
