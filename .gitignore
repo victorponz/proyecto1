@@ -1,6 +1,7 @@
-images/index/
-images/logo/
-images/clients/
-Forms/prueba.php
+public/images/index/
+public/images/logo/
+public/images/clients/
+src/Forms/prueba.php
 .vscode/
-app/config.php
+src/app/config.php
+/vendor/
