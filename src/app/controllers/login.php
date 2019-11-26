@@ -1,6 +1,7 @@
 <?php
     $title = "Login";
     require_once __DIR__ . "/../../utils/utils.php";
+    use ProyectoWeb\core\App;
     use ProyectoWeb\Forms\FormElement;
     use ProyectoWeb\Forms\InputElement;
     use ProyectoWeb\Forms\PasswordElement;
@@ -61,6 +62,9 @@
                 Exception, sino siempre entrará por esta última
                 */
                 $form->addError("Credenciales incorrectas");
+                if (!empty($nombreUsuario->getValue())) {
+                    App::get("logger")->add("Usuario incorrecto: " . $nombreUsuario->getValue());
+                  }
             }catch(Exception $err) {
                 $form->addError($err->getMessage());
             }
