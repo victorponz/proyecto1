@@ -11,7 +11,6 @@
     require_once "./Forms/custom/MyFormControl.php";
     require_once "./Forms/Validator/NotEmptyValidator.php";
     require_once "./entity/Mensaje.php";
-    require_once "./database/Connection.php";
     require_once "./repository/MensajeRepository.php";
  
     $info = "";
@@ -51,9 +50,6 @@
      ->appendChild($messageWrapper)
      ->appendChild($b);
 
-     $config = require_once 'app/config.php';
-     App::bind('config', $config);
-     App::bind('connection', Connection::make($config['database']));
      
      $repositorio = new MensajeRepository();
 
@@ -77,4 +73,4 @@
           }
         }
     }
-  include("./views/contact.view.php");
+  include("app/views/contact.view.php");

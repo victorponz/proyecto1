@@ -7,15 +7,10 @@
     require_once "./Forms/ButtonElement.php";
     require_once "./Forms/custom/MyFormControl.php";
     require_once "./entity/Usuario.php";
-    require_once "./database/Connection.php";
     require_once "./repository/UsuarioRepository.php";
-    require_once "./core/App.php";
     require_once "./security/BCryptPasswordGenerator.php";
 
     $info = "";
-    $config = require_once 'app/config.php';
-    App::bind('config', $config);
-    App::bind('connection', Connection::make($config['database']));
     
     $repositorio = new UsuarioRepository(new BCryptPasswordGenerator());
 
@@ -71,4 +66,4 @@
             }
         }
     }
-    include("./views/login.view.php");
+    include("app/views/login.view.php");

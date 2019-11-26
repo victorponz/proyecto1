@@ -14,15 +14,10 @@ require_once "./Forms/Validator/MinLengthValidator.php";
 require_once "./Forms/Validator/MinLowerCaseValidator.php";
 require_once "./Forms/Validator/MinDigitValidator.php";
 require_once "./entity/Usuario.php";
-require_once "./database/Connection.php";
 require_once "./repository/UsuarioRepository.php";
-require_once "./core/App.php";
 require_once "./security/BCryptPasswordGenerator.php";
 
 $info = "";
-$config = require_once 'app/config.php';
-App::bind('config', $config);
-App::bind('connection', Connection::make($config['database']));
 
 $repositorio = new UsuarioRepository(new BCryptPasswordGenerator());
 
@@ -105,4 +100,4 @@ $form
     }
   }
 
-include("./views/register.view.php");
+include("app/views/register.view.php");
