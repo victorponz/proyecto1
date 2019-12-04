@@ -1,23 +1,35 @@
 <?php
 session_start();
-
 require __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../src/core/bootstrap.php';
+use Slim\Views\PhpRenderer;
+use ProyectoWeb\app\controllers\PageController;
+use ProyectoWeb\app\controllers\ContactController;
+use ProyectoWeb\app\controllers\UserController;
+use ProyectoWeb\app\controllers\GaleriaController;
+use ProyectoWeb\app\controllers\AsociadosController;
 use ProyectoWeb\core\App;
-use ProyectoWeb\core\Router;
-use ProyectoWeb\core\Request;
-
-use ProyectoWeb\database\Connection;
-use ProyectoWeb\app\utils\MyLog;
-
-$routes = require_once __DIR__ . '/../src/app/routes.php';
-$router = new Router($routes);
-App::bind('router', $router);
-
-App::bind('connection', Connection::make(App::get('config')['database']));
 
 App::bind('rootDir', __DIR__ . '/');
 
-App::bind("logger", MyLog::load($config['logs']['channel'], __DIR__ ."/../logs/" . $config['logs']['filename'],  $config['logs']['level']));
+$config = [
+    'settings' => [
+        'displayErrorDetails' => true
+    ],
+];
+$app = new \Slim\App($config);
 
-require $router->direct(Request::uri());
+$container = $app->getContainer();
+$container['renderer'] = new PhpRenderer("../src/app/views");
+
+$app->get('/', PageController::class . ':home')->setName("home");
+$app->get('/about', PageController::class . ':about');
+$app->get('/blog', PageController::class . ':blog');
+$app->get('/single_post', PageController::class . ':singlePost');
+$app->map(['GET', 'POST'], '/contact', ContactController::class . ':contact');
+$app->map(['GET', 'POST'], '/login', UserController::class . ':login')->setName("login");
+$app->map(['GET', 'POST'], '/register', UserController::class . ':register');
+$app->get('/logout', UserController::class . ':logout');
+$app->map(['GET', 'POST'], '/galeria', GaleriaController::class . ':galeria')->setName("galeria");
+$app->map(['GET', 'POST'], '/asociados', AsociadosController::class . ':asociados')->setName("asociados");
+$app->run();
