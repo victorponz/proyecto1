@@ -1,7 +1,7 @@
 <?php
     session_start();
     if (!isset($_SESSION['username'])) {
-      header('location: /login.php?returnToUrl=/galeria.php');
+      header('location: /login?returnToUrl=/galeria');
     }
     $title = "Galería";
     require_once "./utils/utils.php";
@@ -19,7 +19,6 @@
     require_once "./exceptions/FileException.php";
     require_once "./utils/SimpleImage.php";
     require_once "./entity/ImagenGaleria.php";
-    require_once "./database/Connection.php";
     require_once "./repository/ImagenGaleriaRepository.php";
     require_once "./repository/CategoriaRepository.php";
     require_once "./core/App.php";
@@ -40,9 +39,6 @@
 
     $labelFile = new LabelElement('Imagen', $file);
 
-    $config = require_once 'app/config.php';
-    App::bind('config', $config);
-    App::bind('connection', Connection::make($config['database']));
     $repositorio = new ImagenGaleriaRepository();
     $repositorioCategoria = new CategoriaRepository();
 
@@ -104,4 +100,4 @@
       echo $qe->getMessage();
       //En este caso podríamos generar un mensaje de log o parar el script mediante die($qe->getMessage())
     }
-    include("./views/galeria.view.php");
+    include("app/views/galeria.view.php");

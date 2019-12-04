@@ -18,34 +18,34 @@
                   <a href="<?= (esOpcionMenuActiva("index")? "#" : "/");?>"><i class="fa fa-home sr-icons"></i> Home</a>
                 </li>
                 <li class="<?= (esOpcionMenuActiva("about")? "active" : "");?> lien">
-                  <a href="<?= (esOpcionMenuActiva("about")? "#" : "/about.php");?>"><i class="fa fa-bookmark sr-icons"></i> About</a>
+                  <a href="<?= (esOpcionMenuActiva("about")? "#" : "/about");?>"><i class="fa fa-bookmark sr-icons"></i> About</a>
                 </li>
                 <li class="<?= (existeOpcionMenuActivaEnArray(["blog", "single_post"])? "active" : "");?> lien">
-                  <a href="<?= (esOpcionMenuActiva("blog")? "#" : "/blog.php");?>"><i class="fa fa-file-text sr-icons"></i> Blog</a>
+                  <a href="<?= (esOpcionMenuActiva("blog")? "#" : "/blog");?>"><i class="fa fa-file-text sr-icons"></i> Blog</a>
                 </li>
                 <li class="<?= (esOpcionMenuActiva("contact")? "active" : "");?> lien">
-                  <a href="<?= (esOpcionMenuActiva("contact")? "#" : "/contact.php");?>"><i class="fa fa-phone-square sr-icons"></i> Contact</a>
+                  <a href="<?= (esOpcionMenuActiva("contact")? "#" : "/contact");?>"><i class="fa fa-phone-square sr-icons"></i> Contact</a>
                 </li>
                 <?php  if (!isset($_SESSION['username'])):?>
                     <li class="<?= (esOpcionMenuActiva("login")? "active" : "");?> lien">
-                        <a href="<?= (esOpcionMenuActiva("login")? "#" : "/login.php");?>">
+                        <a href="<?= (esOpcionMenuActiva("login")? "#" : "/login");?>">
                             <i class="fa fa-user-secret sr-icons"></i> Login
                         </a>
                     </li>
                     <li class="<?= (esOpcionMenuActiva("register")? "active" : "");?>">
-                        <a href="<?= (esOpcionMenuActiva("register")? "#" : "/register.php");?>">
+                        <a href="<?= (esOpcionMenuActiva("register")? "#" : "/register");?>">
                             <i class="fa fa-sign-in sr-icons"></i> Registro
                         </a>
                     </li>
                 <?php else : ?>
                     <li class="<?= (esOpcionMenuActiva("galeria")? "active" : "");?> lien">
-                    <a href="<?= (esOpcionMenuActiva("galeria")? "#" : "/galeria.php");?>"><i class="fa fa-image sr-icons"></i> Galería</a>
+                    <a href="<?= (esOpcionMenuActiva("galeria")? "#" : "/galeria");?>"><i class="fa fa-image sr-icons"></i> Galería</a>
                     </li>
                     <li class="<?= (esOpcionMenuActiva("asociados")? "active" : "");?> lien">
-                    <a href="<?= (esOpcionMenuActiva("asociados")? "#" : "/asociados.php");?>"><i class="fa fa-hand-o-right sr-icons"></i> Asociados</a>
+                    <a href="<?= (esOpcionMenuActiva("asociados")? "#" : "/asociados");?>"><i class="fa fa-hand-o-right sr-icons"></i> Asociados</a>
                     </li>
                     <li class="<?= (esOpcionMenuActiva("logout")? "active" : "");?>">
-                    <a href="<?= (esOpcionMenuActiva("logout")? "#" : "/logout.php");?>">
+                    <a href="<?= (esOpcionMenuActiva("logout")? "#" : "/logout");?>">
                         <i class="fa fa-sign-out sr-icons"></i> <?=$_SESSION['username']?> - Salir
                     </a>
                 </li>

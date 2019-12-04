@@ -17,13 +17,13 @@
                  <img class="img-responsive" src="images/blog/landscape.jpg" alt="post's picture">
                </div>
                <div class="post-body">
-                 <h3><a href="single_post.php"><strong>doloremque illum</strong></a></h3>
+                 <h3><a href="single_post"><strong>doloremque illum</strong></a></h3>
                  <hr>
                  <p>Duis ultrices tortor non felis convallis bibendum. Maecenas diam velit, sollicitudin at imperdiet ac, consectetur non nibh. Etiam eget dapibus nulla. 
                  </p>
                </div>
                <div class="post-footer">
-                 <a class="btn" href="single_post.php">READ MORE...</a>
+                 <a class="btn" href="single_post">READ MORE...</a>
                  <span>
                  <i class="fa fa-heart sr-icons"></i> 10
                  <i class="fa fa-comments sr-icons"></i> 10
@@ -38,13 +38,13 @@
                  <img class="img-responsive" src="images/blog/family.jpg" alt="post's picture">
                </div>
                <div class="post-body">
-                 <h3><a href="single_post.php"><strong>Lorem ipsum</strong></a></h3>
+                 <h3><a href="single_post"><strong>Lorem ipsum</strong></a></h3>
                  <hr>
                  <p>Nunc sit amet dapibus est, sit amet varius risus. Donec luctus lacinia mauris, at feugiat ligula facilisis ac. Class aptent taciti sociosqu ad litora torquent per conubia.
                  </p>
                </div>
                <div class="post-footer">
-                 <a class="btn" href="single_post.php">READ MORE...</a>
+                 <a class="btn" href="single_post">READ MORE...</a>
                  <span>
                  <i class="fa fa-heart sr-icons"></i> 10
                  <i class="fa fa-comments sr-icons"></i> 10
@@ -59,13 +59,13 @@
                  <img class="img-responsive" src="images/blog/elephant.jpg" alt="post's picture">
                </div>
                <div class="post-body">
-                 <h3><a href="single_post.php"><strong>Aliquam soluta</strong></a></h3>
+                 <h3><a href="single_post"><strong>Aliquam soluta</strong></a></h3>
                  <hr>
                  <p>In felis ante, aliquet sit amet venenatis at, feugiat sed leo. Fusce pretium, velit in luctus ornare, elit lorem ultrices tortor, sed consectetur orci risus mollis ante. 
                  </p>
                </div>
                <div class="post-footer">
-                 <a class="btn" href="single_post.php">READ MORE...</a>
+                 <a class="btn" href="single_post">READ MORE...</a>
                  <span>
                  <i class="fa fa-heart sr-icons"></i> 10
                  <i class="fa fa-comments sr-icons"></i> 10
@@ -126,7 +126,7 @@
                  <i class="fa fa-heart sr-icons"></i> 10
                  <i class="fa fa-comments sr-icons"></i> 10
                  </span>
-                 <h4 class="text-left"><a href="single_post.php"><strong>Aliquam soluta</strong></a></h4>
+                 <h4 class="text-left"><a href="single_post"><strong>Aliquam soluta</strong></a></h4>
                </div>
              </div>
              <div class="post">
@@ -139,7 +139,7 @@
                  <i class="fa fa-heart sr-icons"></i> 10
                  <i class="fa fa-comments sr-icons"></i> 10
                  </span>
-                 <h4 class="text-left"><a href="single_post.php"><strong>Consequuntur</strong></a></h4>
+                 <h4 class="text-left"><a href="single_post"><strong>Consequuntur</strong></a></h4>
                </div>
              </div>
         </div>

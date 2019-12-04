@@ -1,7 +1,7 @@
 <?php
     session_start();
     if (!isset($_SESSION['username'])) {
-      header('location: /login.php?returnToUrl=/asociados.php');
+      header('location: /login?returnToUrl=/asociados');
     }
     $title = "Asociados";
     require_once "./utils/utils.php";
@@ -18,7 +18,6 @@
     require_once "./exceptions/FileException.php";
     require_once "./utils/SimpleImage.php";
     require_once "./entity/Asociado.php";
-    require_once "./database/Connection.php";
     require_once "./repository/AsociadoRepository.php";
     
     $info = $urlImagen = "";
@@ -53,8 +52,6 @@
     ->appendChild($b);
 
     $config = require_once 'app/config.php';
-    App::bind('config', $config);
-    App::bind('connection', Connection::make($config['database']));
 
     $repositorio = new AsociadoRepository();
 
@@ -90,4 +87,4 @@
       echo $qe->getMessage();
       //En este caso podríamos generar un mensaje de log o parar el script mediante die($qe->getMessage())
     } 
-    include("./views/asociados.view.php");
+    include("app/views/asociados.view.php");

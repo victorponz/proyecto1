@@ -1,5 +1,5 @@
 <?php
 	session_start();
-	$title = "About";
+	$title = "Blog";
 	require_once "./utils/utils.php";
-	include("./views/about.view.php");
+	include("app/views/blog.view.php");
