@@ -1,8 +1,9 @@
 <?php
-    $title = "Asociados";
+    session_start();
     if (!isset($_SESSION['username'])) {
       header('location: /login.php?returnToUrl=/asociados.php');
     }
+    $title = "Asociados";
     require_once "./utils/utils.php";
     require_once "./Forms/InputElement.php";
     require_once "./Forms/TextareaElement.php";

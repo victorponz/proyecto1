@@ -1,8 +1,9 @@
 <?php
-    $title = "Galería";
+    session_start();
     if (!isset($_SESSION['username'])) {
       header('location: /login.php?returnToUrl=/galeria.php');
     }
+    $title = "Galería";
     require_once "./utils/utils.php";
     require_once "./Forms/TextareaElement.php";
     require_once "./Forms/ButtonElement.php";
